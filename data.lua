@@ -6,6 +6,7 @@ data:extend {
 			filename = "__PersonalBurnerGenerator__/graphics/equipment.png",
 			width = 192,
 			height = 128,
+			mipmap_count = 3,
 			scale = 1,
 			priority = "medium",
 		},
@@ -45,7 +46,7 @@ data:extend {
 		Solar panel is 30kW for 1 tile.
 		Portable fission reactor is 750kW for 4x4, so 46.875kW per tile.
 		Portable fusion reactor is 2.5MW for 4x4, so 156.25kW per tile.
-		So if we make this say 30kW per tile, it's 4*2*30kW = 200kW total.
+		So if we make this say 25kW per tile, it's 4*2*25kW = 200kW total.
 		]]
 		categories = {"armor"},
 	}, {
@@ -64,8 +65,9 @@ data:extend {
 		energy_required = 10,
 		ingredients =
 		{
-			{type = "item", name = "copper-cable", amount = 4},
-			{type = "item", name = "iron-plate", amount = 10}
+			{type = "item", name = "copper-cable", amount = 8},
+			{type = "item", name = "steel-plate", amount = 20},
+			{type = "item", name = "advanced-circuit", amount = 2},
 		},
 		results = {{type = "item", name = "personal-burner-generator", amount = 1}},
 	}
