@@ -58,6 +58,11 @@ data:extend {
 		subgroup = "equipment",
 		order = "a[energy-source]-0[personal-burner-generator]",
 		stack_size = 20,
+		drop_sound = data.raw.item["flamethrower-turret"].drop_sound,
+		open_sound = data.raw.item["flamethrower-turret"].open_sound,
+		pick_sound = data.raw.item["flamethrower-turret"].pick_sound,
+		close_sound = data.raw.item["flamethrower-turret"].close_sound,
+		inventory_move_sound = data.raw.item["flamethrower-turret"].inventory_move_sound,
 	}, {
 		type = "recipe",
 		name = "personal-burner-generator",

@@ -7,5 +7,5 @@
 	"dependencies": [
 		"base >= 2.0"
 	],
-	"description": "Adds personal equipment to generate energy from burnable fuels."
+	"description": "Personal equipment that burns fuel to generate energy for your armor grid."
 }

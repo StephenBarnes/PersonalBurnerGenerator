@@ -5,6 +5,7 @@ Date: 2025-01-15
     - Removed dependency on Space Age.
     - Minor graphics fix.
     - Changed recipe.
+    - Added sound effects to item.
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.0
 Date: 2025-01-14
