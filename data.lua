@@ -19,9 +19,9 @@ data:extend {
 			type = "burner",
 			usage_priority = "secondary-output",
 			fuel_categories = {"chemical"},
-			effectivity = 1,
-			fuel_inventory_size = 4,
-			burnt_inventory_size = 4,
+			effectivity = settings.startup["personal-burner-generator-fuel-efficiency"].value,
+			fuel_inventory_size = settings.startup["personal-burner-generator-burner-inventory-size"].value,
+			burnt_inventory_size = settings.startup["personal-burner-generator-burner-inventory-size"].value,
 			smoke = {
 				{
 					name = "smoke",
@@ -33,7 +33,11 @@ data:extend {
 					starting_frame_deviation = 60,
 				},
 			},
-			emissions_per_minute = data.raw.boiler.boiler.energy_source.emissions_per_minute,
+			emissions_per_minute =
+				-- If -1, use the boiler's emissions.
+				(settings.startup["personal-burner-generator-pollution-output"].value == -1)
+					and data.raw.boiler.boiler.energy_source.emissions_per_minute
+					or settings.startup["personal-burner-generator-pollution-output"].value,
 		},
 		energy_source = {
 			type = "electric",
@@ -41,13 +45,7 @@ data:extend {
 			buffer_capacity = "1MJ",
 			drain = "0W",
 		},
-		power = "200kW",
-		--[[ For comparison:
-		Solar panel is 30kW for 1 tile.
-		Portable fission reactor is 750kW for 4x4, so 46.875kW per tile.
-		Portable fusion reactor is 2.5MW for 4x4, so 156.25kW per tile.
-		So if we make this say 25kW per tile, it's 4*2*25kW = 200kW total.
-		]]
+		power = tostring(settings.startup["personal-burner-generator-power-output"].value).."kW",
 		categories = {"armor"},
 	}, {
 		type = "item",
