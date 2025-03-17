@@ -1,4 +1,0 @@
-{
-	"Lua.diagnostics.disable": ["undefined-field", "deprecated", "undefined-global"],
-	"editor.formatOnSave": false
-}
