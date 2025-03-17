@@ -19,8 +19,11 @@ data:extend {
 			type = "burner",
 			usage_priority = "secondary-output",
 			fuel_categories = {"chemical"},
+			---@diagnostic disable-next-line: assign-type-mismatch
 			effectivity = settings.startup["personal-burner-generator-fuel-efficiency"].value,
+			---@diagnostic disable-next-line: assign-type-mismatch
 			fuel_inventory_size = settings.startup["personal-burner-generator-burner-inventory-size"].value,
+			---@diagnostic disable-next-line: assign-type-mismatch
 			burnt_inventory_size = settings.startup["personal-burner-generator-burner-inventory-size"].value,
 			smoke = {
 				{
@@ -33,11 +36,10 @@ data:extend {
 					starting_frame_deviation = 60,
 				},
 			},
-			emissions_per_minute =
-				-- If -1, use the boiler's emissions.
-				(settings.startup["personal-burner-generator-pollution-output"].value == -1)
-					and data.raw.boiler.boiler.energy_source.emissions_per_minute
-					or settings.startup["personal-burner-generator-pollution-output"].value,
+			emissions_per_minute = {
+				---@diagnostic disable-next-line: assign-type-mismatch
+				pollution = settings.startup["personal-burner-generator-pollution-output"].value,
+			},
 		},
 		energy_source = {
 			type = "electric",
@@ -77,8 +79,9 @@ data:extend {
 }
 
 -- Add to tech.
-if data.raw.technology["modular-armor"] == nil then
+local tech = data.raw.technology["modular-armor"]
+if tech == nil or tech.hidden then
 	data.raw.recipe["personal-burner-generator"].enabled = true
 else
-	table.insert(data.raw.technology["modular-armor"].effects, {type = "unlock-recipe", recipe = "personal-burner-generator"})
+	table.insert(tech.effects, {type = "unlock-recipe", recipe = "personal-burner-generator"})
 end

@@ -17,8 +17,8 @@ data:extend {
 		type = "int-setting",
 		name = "personal-burner-generator-pollution-output",
 		setting_type = "startup",
-		default_value = -1,
-		minimum_value = -1,
+		default_value = 10,
+		minimum_value = 0,
 	},
 	{
 		type = "double-setting",
@@ -33,6 +33,6 @@ data:extend {
 		setting_type = "startup",
 		default_value = 4,
 		minimum_value = 1,
-		maximum_value = 4,
+		maximum_value = 12,
 	},
 }
